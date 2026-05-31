@@ -13,6 +13,6 @@ public class maximumElement {
             if(arr[i]>max)
                 max=arr[i];
         }
-        System.out.println("Maximum elementis "+max);
+        System.out.println("Maximum element is "+max);
     }
 }
