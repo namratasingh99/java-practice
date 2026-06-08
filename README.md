@@ -1,5 +1,5 @@
 #Java Dsa practice
  
 
- This respository contains my java dsa solutions
+ This respository contains my java problem solutions
  
