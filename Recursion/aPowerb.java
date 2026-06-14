@@ -10,11 +10,12 @@ public class aPowerb {
     public static int power(int a , int b){
         if(b==1) return a;
       //  return a *power(a,b-1);
+        int res=power(a,b/2);
         if(b%2==0){
-            return (power(a,b/2)*power(a,b/2));
+            return res*res;
         }
         else{
-             return (power(a,b/2)*power(a,b/2))*a;
+             return res*res*a;
         }
     }
 }
