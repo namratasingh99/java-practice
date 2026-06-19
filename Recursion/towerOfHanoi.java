@@ -1,8 +1,7 @@
 import java.util.*;
 public class towerOfHanoi {
     public static void hanoi(int n , char src , char aux , char dest ){
-        if(n==1){
-            System.out.print(src+"-"+dest+" ");
+        if(n==0){
             return;
         }
         hanoi(n-1,src,dest,aux);
