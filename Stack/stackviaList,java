@@ -1,0 +1,56 @@
+import java.util.*;
+class Node{
+    int value;
+    Node next;
+    Node(int val){
+        this.value=val;
+        this.next=null;
+    }
+}
+
+public class stackviaList {
+    static Node top = null;
+    public static void push(int value){
+        Node temp = new Node(value);
+        if(top==null){
+            top=temp;
+            return;
+        }
+        temp.next=top;
+        top=temp;
+    }
+    public static void peek(){
+        if(top==null){
+            System.out.println("Stack is empty");
+            return;
+        }
+        System.out.println(top.value);
+    }
+    public static void pop(){
+        if(top==null){
+            System.out.println("Stack is empty");
+            return;
+        }
+        int ele = top.value;
+        top = top.next;
+        System.out.println(ele);
+    }
+    public static void print(){
+        Node temp = top;
+        while(temp!=null){
+            System.out.print(temp.value +" ");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        push(1);
+        push(2);
+        push(3);
+        push(4);
+        print();
+        pop();
+        print();
+    }
+}
