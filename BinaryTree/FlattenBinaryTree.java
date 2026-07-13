@@ -1,0 +1,70 @@
+import java.util.*;
+class Node{
+    int data;
+    Node left;
+    Node right;
+    public Node(int val){
+        this.data = val;
+        left=right=null;
+    }
+}
+public class FlattenBinaryTree {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner (System.in);
+        Node n1 = new Node(1);
+        Node n2 = new Node(2);
+        Node n3 = new Node(3);
+        Node n4 = new Node(4);
+        Node n5 = new Node(5);
+        Node n6 = new Node(6);
+        Node n7 = new Node(7);
+        n1.left = n2;
+        n1.right = n3;
+        n2.left = n4;
+        n2.right = n5;
+        n3.left = n6;
+        n3.right = n7;
+        // Queue<Node> queue = new LinkedList<>();
+        // flattenUsingQueue(n1 ,queue);
+        flattenUsingRecursion(n1);
+        // Node root = queue.remove();
+        // Node traverse = root;
+        // while(!queue.isEmpty()){
+        //     Node temp = queue.remove();
+        //     traverse.left = null;
+        //     traverse.right = temp;
+        //     traverse = traverse.right;
+
+        // }
+        // inOrder(root);
+        inOrder(n1);
+    }
+    public static void flattenUsingQueue(Node root , Queue<Node> queue){
+        if(root==null) return;
+        queue.add(root);
+        flattenUsingQueue(root.left , queue);
+        flattenUsingQueue(root.right , queue);
+    }
+    public static void inOrder(Node root){
+        if(root==null) return;
+        inOrder(root.left);                               
+        System.out.print(root.data +" ");
+        inOrder(root.right);
+    }
+    public static void flattenUsingRecursion(Node root){ 
+        if(root==null ) return;
+        Node leftNode = root.left;
+        Node rightNode = root.right;
+    
+        root.left = null;
+        root.right = null;
+        flattenUsingRecursion(leftNode);
+        flattenUsingRecursion(rightNode);
+        root.right = leftNode;
+        Node last = root;
+        while(last.right!=null){
+            last = last.right;
+        }
+        last.right=rightNode;
+    }
+}
